@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chat With AI</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f6fb;
+      color: #1e293b;
+      display: flex;
+      height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 240px;
+      background: #ffffff;
+      border-right: 1px solid #e2e8f0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 1rem;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      margin-top: 1rem;
+    }
+
+    .sidebar ul li {
+      margin: 12px 0;
+      display: flex;
+      align-items: center;
+      font-size: 15px;
+      color: #334155;
+      cursor: pointer;
+      padding: 6px 8px;
+      border-radius: 6px;
+      transition: background 0.2s;
+    }
+
+    .sidebar ul li:hover {
+      background: #f1f5f9;
+      color: #1e40af;
+    }
+
+    .sidebar-bottom {
+      margin-top: auto;
+      font-size: 14px;
+    }
+
+    .user {
+      display: flex;
+      align-items: center;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    .user img {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    /* Main content */
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 1.5rem;
+    }
+
+    .main-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .main-header h1 {
+      font-size: 20px;
+      font-weight: 600;
+      color: #1e293b;
+    }
+
+    .main-header .actions button {
+      border: none;
+      background: #2563eb;
+      color: #fff;
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .main-header .actions button:hover {
+      background: #1e40af;
+    }
+
+    .welcome {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .welcome img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      margin-bottom: 1rem;
+    }
+
+    .welcome h2 {
+      font-size: 22px;
+      margin-bottom: 6px;
+      color: #0f172a;
+    }
+
+    .welcome p {
+      color: #475569;
+      font-size: 14px;
+    }
+
+    /* Cards */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: #ffffff;
+      padding: 1rem;
+      border-radius: 12px;
+      border: 1px solid #e2e8f0;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+    }
+
+    .card:hover {
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+      transform: translateY(-3px);
+      border-color: #2563eb;
+    }
+
+    .card h3 {
+      font-size: 16px;
+      margin-bottom: 6px;
+      color: #1e40af;
+    }
+
+    .card p {
+      font-size: 13px;
+      color: #475569;
+    }
+
+    /* Message input */
+    .chat-input {
+      margin-top: auto;
+      display: flex;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      padding: 10px;
+      background: #ffffff;
+    }
+
+    .chat-input input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-size: 14px;
+      color: #1e293b;
+    }
+
+    .chat-input button {
+      border: none;
+      background: #2563eb;
+      color: #fff;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-left: 8px;
+      transition: background 0.2s;
+    }
+
+    .chat-input button:hover {
+      background: #1e40af;
+    }
+  </style>
+</head>
+<body>
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div>
+      <h2 style="font-size: 18px; font-weight: 600; color:#2563eb;">⚙️</h2>
+      <ul>
+        <li>📂 Folders</li>
+        <li>📄 Documents</li>
+        <li>📁 Shared With Me</li>
+        <li>🕑 History</li>
+      </ul>
+    </div>
+    <div class="sidebar-bottom">
+      <p>⚙️ Settings</p>
+      <div class="user">
+        <img src="https://via.placeholder.com/36" alt="user"/>
+        <span>Maya Sinclair</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main content -->
+  <main class="main">
+    <div class="main-header">
+      <h1>Chat With AI</h1>
+      <div class="actions">
+        <button>Upgrade</button>
+      </div>
+    </div>
+
+    <div class="welcome">
+      <img src="https://via.placeholder.com/60" alt="avatar"/>
+      <h2>Welcome, Maya</h2>
+      <p>Start by scripting a task, and let the chat take over. Not sure where to start?</p>
+    </div>
+
+    <div class="card-grid">
+      <div class="card">
+        <h3>✍️ Write Copy</h3>
+        <p>Craft compelling text for ads and emails.</p>
+      </div>
+      <div class="card">
+        <h3>🖼️ Image Generation</h3>
+        <p>Design custom visuals with AI.</p>
+      </div>
+      <div class="card">
+        <h3>🔍 Research</h3>
+        <p>Quickly gather and summarize info.</p>
+      </div>
+      <div class="card">
+        <h3>📝 Generate Article</h3>
+        <p>Write articles on any topic instantly.</p>
+      </div>
+      <div class="card">
+        <h3>📊 Data Analytics</h3>
+        <p>Analyze data with AI-driven insights.</p>
+      </div>
+      <div class="card">
+        <h3>{ } Generate Code</h3>
+        <p>Produce accurate code fast.</p>
+      </div>
+    </div>
+
+    <div class="chat-input">
+      <input type="text" placeholder="Write your message..." />
+      <button>➤</button>
+    </div>
+  </main>
+</body>
+</html>
