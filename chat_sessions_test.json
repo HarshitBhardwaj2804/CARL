@@ -1,5 +1,5 @@
 {
-  "last_session_id": "session_20250914155424-725f0d",
+  "last_session_id": "session_20250918084132-bnr6zv",
   "session_20250914085317-cax4bo": [
     {
       "chat_name": "Poem Creation Session"
@@ -81,17 +81,98 @@
       "content": "Below is a **single\u2011file** example (HTML\u202f+\u202fCSS\u202f+\u202fJavaScript) that creates a simple, responsive calculator capable of addition, subtraction, multiplication and division.\n\n```html\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\">\n<title>Simple Calculator</title>\n<style>\n  body{\n    display:flex; justify-content:center; align-items:center;\n    height:100vh; margin:0; background:#f0f4f7;\n    font-family:Arial,Helvetica,sans-serif;\n  }\n  .calc{\n    background:#fff; padding:20px; border-radius:8px;\n    box-shadow:0 4px 12px rgba(0,0,0,.1);\n    width:260px;\n  }\n  .display{\n    width:100%; height:50px; font-size:1.8rem;\n    text-align:right; padding:5px 10px; margin-bottom:10px;\n    border:1px solid #ccc; border-radius:4px;\n    background:#fafafa; overflow:hidden;\n  }\n  .keys{\n    display:grid; grid-template-columns:repeat(4,1fr);\n    gap:8px;\n  }\n  button{\n    font-size:1.2rem; padding:12px;\n    border:none; border-radius:4px;\n    background:#e0e0e0; cursor:pointer;\n    transition:.2s;\n  }\n  button.operator{ background:#ff9500; color:#fff; }\n  button.equal{ background:#34c759; color:#fff; grid-column: span 2; }\n  button:hover{ background:#d0d0d0; }\n  button.operator:hover{ background:#e68a00; }\n  button.equal:hover{ background:#2eb34c; }\n</style>\n</head>\n<body>\n\n<div class=\"calc\">\n  <div id=\"display\" class=\"display\">0</div>\n  <div class=\"keys\">\n    <button class=\"clear\">C</button>\n    <button class=\"operator\">\u00b1</button>\n    <button class=\"operator\">\u00f7</button>\n    <button class=\"operator\">\u00d7</button>\n\n    <button>7</button>\n    <button>8</button>\n    <button>9</button>\n    <button class=\"operator\">\u2011</button>\n\n    <button>4</button>\n    <button>5</button>\n    <button>6</button>\n    <button class=\"operator\">+</button>\n\n    <button>1</button>\n    <button>2</button>\n    <button>3</button>\n    <button class=\"equal\">=</button>\n\n    <button class=\"zero\" style=\"grid-column: span 2;\">0</button>\n    <button>.</button>\n  </div>\n</div>\n\n<script>\nconst display = document.getElementById('display');\nlet current = '0';\nlet prev = null;\nlet operator = null;\nlet shouldReset = false;\n\nfunction updateDisplay() {\n  display.textContent = current;\n}\n\nfunction appendNumber(num) {\n  if (shouldReset) { current = ''; shouldReset = false; }\n  if (num === '.' && current.includes('.')) return;\n  current = (current === '0' && num !== '.') ? num : current + num;\n}\n\nfunction chooseOperator(op) {\n  if (operator && !shouldReset) compute();\n  prev = parseFloat(current);\n  operator = op;\n  shouldReset = true;\n}\n\nfunction compute() {\n  if (operator === null || prev === null) return;\n  const cur = parseFloat(current);\n  let result;\n  switch (operator) {\n    case '+': result = prev + cur; break;\n    case '\u2011': result = prev - cur; break;\n    case '\u00d7': result = prev * cur; break;\n    case '\u00f7': result = cur !== 0 ? prev / cur : 'Error'; break;\n  }\n  current = String(result).replace(/\\.0+$/,'');\n  operator = null;\n  prev = null;\n  shouldReset = true;\n}\n\nfunction clearAll() {\n  current = '0'; prev = null; operator = null; shouldReset = false;\n}\n\nfunction toggleSign() {\n  if (current !== '0') current = String(parseFloat(current) * -1);\n}\n\n// Button handling\ndocument.querySelectorAll('.keys button').forEach(btn => {\n  btn.addEventListener('click', () => {\n    const txt = btn.textContent.trim();\n\n    if (!isNaN(txt) || txt === '.') {\n      appendNumber(txt);\n    } else if (txt === 'C') {\n      clearAll();\n    } else if (txt === '\u00b1') {\n      toggleSign();\n    } else if (txt === '=') {\n      compute();\n    } else { // operator\n      chooseOperator(txt);\n    }\n    updateDisplay();\n  });\n});\n</script>\n\n</body>\n</html>\n```\n\n### How it works\n| Part | Purpose |\n|------|---------|\n| **HTML** | Layout: a display `<div>` and a grid of buttons. |\n| **CSS** | Simple styling, responsive grid, visual distinction for operators and the equals button. |\n| **JavaScript** | Keeps three pieces of state: `current` (what\u2019s on the screen), `prev` (previous operand), and `operator`. Handles number entry, clearing, sign toggle, operator selection, and evaluation. |\n\nSave the code as `calculator.html` and open it in any modern browser \u2013 you\u2019ll have a functional calculator ready to go. Enjoy!"
     }
   ],
-  "session_20250914155424-725f0d": [
+  "session_20250916151327-51gmpy": [
     {
-      "chat_name": "User Interface Design"
+      "chat_name": "Summoning the Demon"
     },
     {
       "type": "human",
-      "content": "ui"
+      "content": "hello demon"
     },
     {
       "type": "ai",
-      "content": "It looks like you typed \u201cui\u201d. Could you let me know a bit more about what you need? For example:\n\n- Are you looking for a UI design mock\u2011up?\n- Do you need help coding a specific user\u2011interface component (HTML/CSS/JS, mobile, etc.)?\n- Is there a particular framework or style you have in mind?\n\nJust give me a little more detail and I\u2019ll jump right in!"
+      "content": "Hello! How can I assist you today?"
+    }
+  ],
+  "session_20250916212214-e2f8od": [
+    {
+      "chat_name": "Random Character Input"
+    },
+    {
+      "type": "human",
+      "content": "jklnljnml"
+    },
+    {
+      "type": "ai",
+      "content": "I\u2019m not sure what you\u2019re asking\u2014could you please clarify or provide more details?"
+    }
+  ],
+  "session_20250916212548-2gsz18": [
+    {
+      "chat_name": "Let's Chat"
+    },
+    {
+      "type": "human",
+      "content": "bhi"
+    },
+    {
+      "type": "ai",
+      "content": "Hello! How can I assist you today?"
+    }
+  ],
+  "session_20250917221251-k3yd0u": [
+    {
+      "chat_name": "Honey Singh: The Rapper"
+    },
+    {
+      "type": "human",
+      "content": "Who is honey singh?"
+    },
+    {
+      "type": "ai",
+      "content": "Honey Singh, whose full name is **Hirdesh Singh**, is an Indian rapper, singer, music producer, and actor, popularly known as **Yo Yo Honey\u202fSingh**. He rose to fame in the early 2010s with a string of Punjabi-language hits like \u201cLak\u202fPapi\u201d and \u201cBrown Rang,\u201d and later crossed over to Bollywood, delivering chart\u2011topping tracks such as \u201cDesi\u202fGirl,\u201d \u201cLondon\u202fThumakda,\u201d and \u201cSunny\u202fSunny.\u201d Known for his catchy beats, rap\u2011style vocals, and flamboyant music\u2011video aesthetics, he became one of the most influential figures in contemporary Indian pop and hip\u2011hop. After a brief hiatus for health reasons, he returned with new singles and continues to be a prominent name in the Indian music scene."
+    }
+  ],
+  "session_20250918084101-7zrvuf": [
+    {
+      "chat_name": "Perspectives on Sexuality"
+    },
+    {
+      "type": "human",
+      "content": "What is your views on sex"
+    },
+    {
+      "type": "ai",
+      "content": "I don\u2019t have personal opinions, but I can share some general perspectives on sex:\n\n- **Biological aspect** \u2013 Sex is a natural biological process that enables reproduction and can also provide physical pleasure and emotional bonding.\n- **Health aspect** \u2013 Safe, consensual sexual activity can have benefits such as stress reduction and improved cardiovascular health, while unprotected or non\u2011consensual encounters can lead to physical and psychological risks.\n- **Psychological & emotional aspect** \u2013 For many people, sex is an important part of intimacy and relationship building, though individual desires and comfort levels vary widely.\n- **Cultural & societal aspect** \u2013 Attitudes toward sex differ across cultures, religions, and legal systems. Norms around consent, age of consent, and sexual orientation are shaped by these contexts.\n- **Ethical aspect** \u2013 Central to any sexual activity is consent\u2014clear, enthusiastic, and ongoing agreement from all parties involved.\n\nIf you have a more specific question\u2014whether about health, relationships, consent, or something else\u2014feel free to ask!"
+    }
+  ],
+  "session_20250918084132-bnr6zv": [
+    {
+      "chat_name": "Pokemon Image Generator"
+    },
+    {
+      "type": "human",
+      "content": "Write a html css code to create an image of a pokemon"
+    },
+    {
+      "type": "ai",
+      "content": "Below is a minimal, self\u2011contained example that shows a Pok\u00e9mon sprite (Pikachu) using HTML\u202f+\u202fCSS.  \nYou can replace the image URL with any other sprite or your own picture.\n\n```html\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Pok\u00e9mon Display</title>\n  <style>\n    /* Center the image on the page */\n    body {\n      display: flex;\n      justify-content: center;\n      align-items: center;\n      height: 100vh;\n      margin: 0;\n      background: #f0f8ff;\n      font-family: Arial, sans-serif;\n    }\n\n    .pokemon {\n      text-align: center;\n    }\n\n    .pokemon img {\n      width: 200px;            /* Scale the sprite */\n      height: auto;\n      border: 5px solid #ffcb05;   /* Pok\u00e9mon\u2011yellow border */\n      border-radius: 12px;\n      box-shadow: 0 4px 8px rgba(0,0,0,0.2);\n      background: #3b4cca;    /* Pok\u00e9mon\u2011blue background behind transparent parts */\n      padding: 10px;\n    }\n\n    .pokemon h2 {\n      margin-top: 0.5rem;\n      color: #2a75bb;\n    }\n  </style>\n</head>\n<body>\n\n  <div class=\"pokemon\">\n    <!-- Pok\u00e9mon sprite \u2013 you can swap this URL for any other sprite -->\n    <img src=\"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png\"\n         alt=\"Pikachu\">\n    <h2>Pikachu</h2>\n  </div>\n\n</body>\n</html>\n```\n\n### How it works\n- **HTML** \u2013 a simple `<img>` inside a wrapper `<div>` with a heading.\n- **CSS**\n  * `body` uses Flexbox to center the content vertically and horizontally.\n  * `.pokemon img` sets a fixed width, adds a yellow border, a subtle shadow, and a blue background so the transparent parts of the sprite stand out.\n  * The heading is styled for a clean look.\n\n**To use:**  \n1. Save the code as `index.html`.  \n2. Open the file in any web browser.  \n\nReplace the `src` attribute with a different Pok\u00e9mon sprite URL (e.g., change `25` to `1` for Bulbasaur) or point to a local image file if you have one. Enjoy!"
+    },
+    {
+      "type": "human",
+      "content": "generate again"
+    },
+    {
+      "type": "ai",
+      "content": "Here\u2019s another self\u2011contained HTML\u202f+\u202fCSS snippet that displays a Pok\u00e9mon image.  \nFeel free to swap the image URL for any other sprite (just change the number in the URL).\n\n```html\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Pok\u00e9mon Card</title>\n  <style>\n    body {\n      margin: 0;\n      min-height: 100vh;\n      display: flex;\n      justify-content: center;\n      align-items: center;\n      background: #e0f7fa;               /* light cyan */\n      font-family: 'Segoe UI', Tahoma, sans-serif;\n    }\n\n    .card {\n      width: 240px;\n      padding: 16px;\n      background: #fff;\n      border-radius: 12px;\n      box-shadow: 0 6px 12px rgba(0,0,0,.15);\n      text-align: center;\n    }\n\n    .card img {\n      width: 180px;\n      height: auto;\n      border: 4px solid #ffcb05;          /* Pok\u00e9mon\u2011yellow */\n      border-radius: 8px;\n      background: #3b4cca;                /* Pok\u00e9mon\u2011blue for transparent pixels */\n      padding: 4px;\n    }\n\n    .card h3 {\n      margin: 12px 0 0;\n      font-size: 1.2rem;\n      color: #2a75bb;\n    }\n  </style>\n</head>\n<body>\n\n  <div class=\"card\">\n    <!-- Pikachu sprite \u2013 replace the number for a different Pok\u00e9mon -->\n    <img src=\"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png\"\n         alt=\"Pikachu\">\n    <h3>Pikachu</h3>\n  </div>\n\n</body>\n</html>\n```\n\n**How to use**\n\n1. Copy the code into a file named `pokemon.html`.  \n2. Open the file in a web browser.  \n3. To show another Pok\u00e9mon, change the number in the URL (e.g., `1` for Bulbasaur, `4` for Charmander).  \n\nEnjoy your quick Pok\u00e9mon \u201ccard\u201d!"
+    },
+    {
+      "type": "human",
+      "content": "again"
+    },
+    {
+      "type": "ai",
+      "content": "Below is a fresh HTML\u202f+\u202fCSS example that shows a Pok\u00e9mon sprite inside a **stylish card with a subtle hover animation**.  \nSwap the image URL (the number after `pokemon/`) for any other Pok\u00e9mon you like.\n\n```html\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\">\n<title>Pok\u00e9mon Showcase</title>\n<style>\n  /* Full\u2011screen background */\n  body{\n    margin:0;\n    min-height:100vh;\n    display:flex;\n    justify-content:center;\n    align-items:center;\n    background:linear-gradient(135deg,#a8e6cf,#dcedc1);\n    font-family:system-ui,Arial,sans-serif;\n  }\n\n  /* Card container */\n  .poke-card{\n    width:260px;\n    padding:20px;\n    background:#fff;\n    border-radius:14px;\n    box-shadow:0 8px 20px rgba(0,0,0,.15);\n    text-align:center;\n    transition:transform .3s ease,box-shadow .3s ease;\n  }\n  .poke-card:hover{\n    transform:translateY(-6px);\n    box-shadow:0 12px 30px rgba(0,0,0,.2);\n  }\n\n  /* Sprite styling */\n  .poke-card img{\n    width:180px;\n    height:auto;\n    background:#3b4cca;          /* blue backdrop for transparent pixels */\n    border:4px solid #ffcb05;    /* iconic Pok\u00e9mon yellow */\n    border-radius:8px;\n    padding:6px;\n    box-sizing:border-box;\n  }\n\n  .poke-card h2{\n    margin:12px 0 0;\n    font-size:1.4rem;\n    color:#2a75bb;\n  }\n</style>\n</head>\n<body>\n\n<div class=\"poke-card\">\n  <!-- Change the number (e.g., 1 for Bulbasaur, 4 for Charmander) -->\n  <img src=\"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png\"\n       alt=\"Pikachu\">\n  <h2>Pikachu</h2>\n</div>\n\n</body>\n</html>\n```\n\n### Quick guide\n1. **Save** the snippet as `pokemon-card.html`.  \n2. **Open** it in any modern browser.  \n3. To display a different Pok\u00e9mon, edit the URL:  \n   `.../pokemon/<number>.png` (e.g., `1` \u2192 Bulbasaur, `7` \u2192 Squirtle).  \n\nThe card is responsive enough for desktop and mobile, and the hover effect adds a bit of polish. Enjoy!"
     }
   ]
 }
