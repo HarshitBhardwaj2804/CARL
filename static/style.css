@@ -147,7 +147,7 @@ body {
     width: 28px; /* Circular button dimensions */
     height: 28px;
     border-radius: 36%; /* Make it a perfect circle */
-    /* background-color: #2563eb; A nice, prominent blue */
+    background-color: transparent;
     color: #000000;
     font-size: 24px;
     display: flex;
@@ -157,6 +157,13 @@ body {
     cursor: pointer;
     transition: all 0.2s ease;
     /* box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25); */
+}
+
+.new-chat-btn img {
+  width: 20px;
+  height: 85px;
+  object-fit: contain;
+  margin-bottom: 0px;
 }
 
 .chat-header button:hover {
@@ -308,21 +315,45 @@ body {
   box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.25);
 }
 
+/* ---- Send Button Container ---- */
 .send-button {
   position: absolute;
   right: 10px;
-  top: 46%;
+  top: 50%;
   transform: translateY(-50%);
-  padding: 7px 13px;
+  padding: 0; /* Ensures the button fits the image exactly */
   border: none;
-  border-radius: 50%;
-  background-color: #007bff;
-  color: white;
-  font-size: 16px;
+  background-color: transparent; /* Makes the button background invisible */
   cursor: pointer;
+  /* Crucial: Remove all default browser styles on focus and active states */
+  outline: none;
+  box-shadow: none;
+  transition: all 0.2s ease;
 }
-.send-button::before {
-  content: '↑';
+
+/* Ensure all button states (hover, focus, active) are also transparent */
+.send-button:hover,
+.send-button:focus,
+.send-button:active {
+  background-color: transparent !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* ---- Image Styling ---- */
+.send-button img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  /* Add a subtle hover effect to the image itself */
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  margin-bottom: 3px;
+}
+
+/* Hover effect on the image */
+.send-button:hover img {
+  opacity: 0.8; /* A subtle fade for the image */
+  transform: scale(1.05); /* Slight scale up for a dynamic feel */
 }
 
 .web-search-btn {
