@@ -133,19 +133,6 @@
       "content": "Honey Singh, whose full name is **Hirdesh Singh**, is an Indian rapper, singer, music producer, and actor, popularly known as **Yo Yo Honey\u202fSingh**. He rose to fame in the early 2010s with a string of Punjabi-language hits like \u201cLak\u202fPapi\u201d and \u201cBrown Rang,\u201d and later crossed over to Bollywood, delivering chart\u2011topping tracks such as \u201cDesi\u202fGirl,\u201d \u201cLondon\u202fThumakda,\u201d and \u201cSunny\u202fSunny.\u201d Known for his catchy beats, rap\u2011style vocals, and flamboyant music\u2011video aesthetics, he became one of the most influential figures in contemporary Indian pop and hip\u2011hop. After a brief hiatus for health reasons, he returned with new singles and continues to be a prominent name in the Indian music scene."
     }
   ],
-  "session_20250918084101-7zrvuf": [
-    {
-      "chat_name": "Perspectives on Sexuality"
-    },
-    {
-      "type": "human",
-      "content": "What is your views on sex"
-    },
-    {
-      "type": "ai",
-      "content": "I don\u2019t have personal opinions, but I can share some general perspectives on sex:\n\n- **Biological aspect** \u2013 Sex is a natural biological process that enables reproduction and can also provide physical pleasure and emotional bonding.\n- **Health aspect** \u2013 Safe, consensual sexual activity can have benefits such as stress reduction and improved cardiovascular health, while unprotected or non\u2011consensual encounters can lead to physical and psychological risks.\n- **Psychological & emotional aspect** \u2013 For many people, sex is an important part of intimacy and relationship building, though individual desires and comfort levels vary widely.\n- **Cultural & societal aspect** \u2013 Attitudes toward sex differ across cultures, religions, and legal systems. Norms around consent, age of consent, and sexual orientation are shaped by these contexts.\n- **Ethical aspect** \u2013 Central to any sexual activity is consent\u2014clear, enthusiastic, and ongoing agreement from all parties involved.\n\nIf you have a more specific question\u2014whether about health, relationships, consent, or something else\u2014feel free to ask!"
-    }
-  ],
   "session_20250918084132-bnr6zv": [
     {
       "chat_name": "Pokemon Image Generator"
@@ -175,4 +162,5 @@
       "content": "Below is a fresh HTML\u202f+\u202fCSS example that shows a Pok\u00e9mon sprite inside a **stylish card with a subtle hover animation**.  \nSwap the image URL (the number after `pokemon/`) for any other Pok\u00e9mon you like.\n\n```html\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\">\n<title>Pok\u00e9mon Showcase</title>\n<style>\n  /* Full\u2011screen background */\n  body{\n    margin:0;\n    min-height:100vh;\n    display:flex;\n    justify-content:center;\n    align-items:center;\n    background:linear-gradient(135deg,#a8e6cf,#dcedc1);\n    font-family:system-ui,Arial,sans-serif;\n  }\n\n  /* Card container */\n  .poke-card{\n    width:260px;\n    padding:20px;\n    background:#fff;\n    border-radius:14px;\n    box-shadow:0 8px 20px rgba(0,0,0,.15);\n    text-align:center;\n    transition:transform .3s ease,box-shadow .3s ease;\n  }\n  .poke-card:hover{\n    transform:translateY(-6px);\n    box-shadow:0 12px 30px rgba(0,0,0,.2);\n  }\n\n  /* Sprite styling */\n  .poke-card img{\n    width:180px;\n    height:auto;\n    background:#3b4cca;          /* blue backdrop for transparent pixels */\n    border:4px solid #ffcb05;    /* iconic Pok\u00e9mon yellow */\n    border-radius:8px;\n    padding:6px;\n    box-sizing:border-box;\n  }\n\n  .poke-card h2{\n    margin:12px 0 0;\n    font-size:1.4rem;\n    color:#2a75bb;\n  }\n</style>\n</head>\n<body>\n\n<div class=\"poke-card\">\n  <!-- Change the number (e.g., 1 for Bulbasaur, 4 for Charmander) -->\n  <img src=\"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png\"\n       alt=\"Pikachu\">\n  <h2>Pikachu</h2>\n</div>\n\n</body>\n</html>\n```\n\n### Quick guide\n1. **Save** the snippet as `pokemon-card.html`.  \n2. **Open** it in any modern browser.  \n3. To display a different Pok\u00e9mon, edit the URL:  \n   `.../pokemon/<number>.png` (e.g., `1` \u2192 Bulbasaur, `7` \u2192 Squirtle).  \n\nThe card is responsive enough for desktop and mobile, and the hover effect adds a bit of polish. Enjoy!"
     }
   ]
+
 }
