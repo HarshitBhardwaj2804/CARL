@@ -325,91 +325,111 @@ body {
    =========================== */
 @media (max-width: 768px) {
 
-  /* Sidebar */
-  .sidebar {
-    width: 200px;
-    transform: translateX(-100%); /* hidden by default */
-    position: fixed;
-    z-index: 2000;
-  }
+    /* Base Layout Fixes */
+    body {
+        overflow-x: hidden;
+    }
 
-  .sidebar.active {
-    transform: translateX(0); /* shown when toggled */
-  }
+    .container {
+        width: 100%;
+        transform: none; /* remove any unwanted transforms */
+    }
 
-  .close-sidebar {
-    display: block; /* show close button on mobile */
-  }
+    /* Sidebar */
+    .sidebar {
+        width: 280px; /* Use a consistent width */
+        transform: translateX(-100%); /* Keeps it off-screen by default */
+        position: absolute; /* Change to absolute for consistent behavior */
+        z-index: 1001; /* Ensure it's on top of everything */
+        box-shadow: 4px 0 15px rgba(0, 0, 0, 0.2);
+    }
 
-  /* Show hamburger in header */
-  .hamburger {
-    display: block;
-    margin-right: 10px;
-  }
+    .sidebar.active {
+        transform: translateX(0); /* Slides into view */
+    }
 
-  /* Main area shifts back to full width */
-  .main {
-    margin-left: 0;
-  }
+    .close-sidebar {
+        display: block; /* Show the close button */
+    }
 
-  /* Chat header */
-  .chat-header h1 {
-    font-size: 20px;
-    text-align: left;
-  }
+    /* Main Area */
+    .main {
+        margin-left: 0; /* No margin on mobile */
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
 
-  .chat-header button {
-    padding: 6px 10px;
-    font-size: 0.8rem;
-  }
+    /* Hamburger Menu */
+    .hamburger {
+        display: block;
+        position: absolute;
+        left: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
 
-  /* Chat box */
-  .chat-box {
-    padding: 10px;
-    gap: 10px;
-  }
+    /* Header */
+    .chat-header {
+        padding: 15px 20px;
+        justify-content: center;
+        position: relative;
+    }
+    
+    .chat-header h1 {
+        font-size: 22px;
+        flex-grow: 0;
+        text-align: center;
+        margin: 0 auto;
+    }
 
-  .message {
-    max-width: 90%; /* allow wider messages */
-    font-size: 0.9rem;
-  }
+    /* Chat Box */
+    .chat-box {
+        padding: 10px;
+        gap: 10px;
+    }
 
-  /* Chat input */
-  .chat-input {
-    flex-direction: row;
-    padding: 6px;
-  }
+    .message {
+        max-width: 98%;
+        font-size: 0.9rem;
+    }
 
-  .chat-input input {
-    font-size: 0.9rem;
-    padding: 6px;
-    margin-right: 6px;
-  }
+    /* Chat Input */
+    .chat-input {
+        flex-direction: row;
+        padding: 6px;
+    }
 
-  .chat-input button {
-    padding: 6px 10px;
-    font-size: 0.85rem;
-  }
+    .chat-input input {
+        font-size: 0.9rem;
+        padding: 6px;
+        margin-right: 6px;
+    }
 
-  /* PDF Sidebar hidden on mobile */
-  .pdf-sidebar {
-    display: none;
-  }
+    .chat-input button {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+    }
 
-  /* Buttons (Load/Delete/Archive) always in one row */
-  .button-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    gap: 6px;
-    margin: 10px;
-  }
+    /* PDF Sidebar hidden on mobile */
+    .pdf-sidebar {
+        display: none;
+    }
 
-  .button-container button {
-    flex: 1 1 auto;
-    min-width: 0;
-    font-size: 0.8rem;
-    padding: 6px;
-  }
+    /* Button Container (if applicable) */
+    .button-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        gap: 6px;
+        margin: 10px;
+    }
+
+    .button-container button {
+        flex: 1 1 auto;
+        min-width: 0;
+        font-size: 0.8rem;
+        padding: 6px;
+    }
 }

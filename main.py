@@ -27,7 +27,7 @@ prompt = ChatPromptTemplate(
     [
         ("system", ("You are CARL, an excellent assistant. Your task is to help your master as best you can in his/her questions. \n"
         "You have to answer in a way define in the custom instruction given by the user. If the value of instructions \n"
-        "is None/Null then you just have to answer in a manner just like you did by default. \n"
+        "is None/Null then you just have to answer in a normal manner . \n"
         "Try to answer not very long it loose attention, answer long when there is a need."
         "{instructions}")),
         MessagesPlaceholder(variable_name="history"),
@@ -35,18 +35,18 @@ prompt = ChatPromptTemplate(
     ]
 )
 
-llm = ChatGroq(model="openai/gpt-oss-120b", groq_api_key=groq_api_key)
-chain = prompt | llm
+# llm = ChatGroq(model="openai/gpt-oss-120b", groq_api_key=groq_api_key)
+# chain = prompt | llm
 
 def get_session_history(session_id: str):
     return NamedJSONChatMessageHistory(session_id=session_id, file_path="chat_sessions_test.json")
 
-message_chain = RunnableWithMessageHistory(
-    chain,
-    get_session_history=get_session_history,
-    input_messages_key="question",
-    history_messages_key="history"
-)
+# message_chain = RunnableWithMessageHistory(
+#     chain,
+#     get_session_history=get_session_history,
+#     input_messages_key="question",
+#     history_messages_key="history"
+# )
 
 def generate_session_details():
     timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
@@ -54,20 +54,45 @@ def generate_session_details():
     session_id = f"session_{timestamp}-{rand_suffix}"
     return session_id
 
+SETTINGS_FILE = "user_settings.json"
+
+def get_settings():
+    if not os.path.exists(SETTINGS_FILE):
+        return {"model": "openai/gpt-oss-120b", "temperature": 0.7, "instructions": ""}
+    with open(SETTINGS_FILE, "r") as f:
+        return json.load(f)
+
 app = Flask(__name__)
 
 @app.route("/")
 def index():
     session_id = generate_session_details()
-    return render_template("index.html", session_id = session_id)
+    settings = get_settings()
+    is_dark_mode = settings.get("darkMode", False)
+    return render_template("index.html", session_id=session_id, dark_mode=is_dark_mode)
     
 
 @app.route("/send_message", methods=["POST"])
 def send_message():
-    instructions = None
     user_message = request.json.get("message")
     webSearchFlag = request.json.get("webSearchFlag")
     session_id = request.json.get("session_id")
+
+    settings = get_settings()
+    instructions = settings.get("instructions")
+    model_name = settings.get("model")
+    temperature = settings.get("temperature")
+
+    # Use the new values to instantiate the LLM and the chain dynamically
+    llm = ChatGroq(model=model_name, groq_api_key=groq_api_key, temperature=temperature)
+    chain = prompt | llm
+
+    message_chain = RunnableWithMessageHistory(
+        chain,
+        get_session_history=get_session_history,
+        input_messages_key="question",
+        history_messages_key="history"
+    )
 
     if webSearchFlag == 1:
         search_agent = TavilyAgentwithHistory()
@@ -215,6 +240,21 @@ def pdf_chatbot():
 @app.route("/settings")
 def settings():
     return render_template("settings.html")
+
+@app.route("/get_settings")
+def get_settings_route():
+    settings = get_settings()
+    return jsonify(settings)
+
+@app.route("/save_settings", methods=["POST"])
+def save_settings():
+    try:
+        settings_data = request.json
+        with open(SETTINGS_FILE, "w") as f:
+            json.dump(settings_data, f, indent=2)
+        return jsonify({"success": True})
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)})
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0")

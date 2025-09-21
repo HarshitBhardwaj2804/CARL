@@ -411,58 +411,114 @@ body {
   margin: 0;
 }
 
-/* Responsive Design */
+/* ===========================
+   Mobile Styles
+   =========================== */
 @media (max-width: 768px) {
+
+  /* Base Layout Fixes */
+  body {
+    overflow-x: hidden;
+  }
+  
   .container {
-    flex-direction: column;
+    width: 100%;
+    transform: none; /* remove desktop transition */
   }
 
+  /* Sidebar */
   .sidebar {
-    transform: translateX(-100%);
-    /* Hidden off-screen */
-    width: 80%;
-    /* Reduced width for mobile */
-    z-index: 1001;
+    width: 280px; /* Consistent width for mobile sidebar */
+    transform: translateX(-100%); /* hidden by default */
+    position: absolute; /* Changed to absolute for consistent behavior */
+    z-index: 1001; /* Ensure it's on top of everything */
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.2);
   }
 
   .sidebar.active {
-    transform: translateX(0);
-    /* Visible when toggled */
+    transform: translateX(0); /* shown when toggled */
   }
 
   .close-sidebar {
-    display: block;
-    /* Show close button on mobile */
+    display: block; /* show close button on mobile */
   }
 
+  /* Main Area */
   .main {
-    margin-left: 0;
-    /* No margin when sidebar is hidden */
+    margin-left: 0; /* No margin on mobile */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
   }
 
+  /* Hamburger Menu */
   .hamburger {
     display: block;
-    /* Show hamburger menu on mobile */
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  /* Header */
+  .chat-header {
+    padding: 15px 20px;
+    justify-content: center;
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
   }
 
   .chat-header h1 {
-    font-size: 20px;
+    font-size: 22px;
+    flex-grow: 0;
     text-align: center;
+    margin: 0 auto;
   }
 
+  /* History Section */
   .history-section {
     padding: 15px;
   }
 
+  /* History Buttons */
   .history-buttons {
     flex-direction: row;
     gap: 10px;
+    margin-top: 10px;
   }
 
   .history-button {
     margin: 0;
     padding: 10px;
     font-size: 13px;
+  }
+
+  /* History List */
+  .lastchat {
+    margin-top: 20px;
+  }
+
+  .last-history .button-container,
+  .history-list .button-container {
+    display: none; /* Crucially, hide by default */
+    margin: 8px 0 0 10px;
+    gap: 8px;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
+
+  .last-history.expanded .button-container,
+  .history-list li.expanded .button-container {
+    display: flex; /* Display when the JS adds the 'expanded' class */
+  }
+
+  .button-container button,
+  .button-container a button {
+    flex: 1 1 auto;
+    min-width: 0;
+    font-size: 12px;
+    padding: 8px 5px;
+    white-space: nowrap;
   }
 
   .history-list li {
@@ -476,33 +532,20 @@ body {
   .history-date {
     font-size: 12px;
   }
+}
 
-  .history-item-content {
-    font-size: 13px;
-  }
+/* New CSS to handle the expand/collapse state with a class */
+.history-item-expanded .button-container,
+.last-history.expanded .button-container {
+  display: flex;
+  animation: fadeIn 0.3s ease-out;
+}
 
-  .button-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    /* prevent wrapping */
-    justify-content: space-between;
-    /* spread them out */
-    gap: 8px;
-    margin-left: 10px;
-  }
+/* Ensure the arrow rotates */
+.history-item-expanded .arrow {
+  transform: translateY(-50%) rotate(180deg);
+}
 
-  .button-container button,
-  .button-container a button {
-    flex: 1 1 auto;
-    min-width: 0;
-    font-size: 13px;
-    padding: 8px 5px;
-    white-space: nowrap;
-    /* Prevents button text from breaking into multiple lines */
-  }
-
-  .sidebar .sidebar-settings li {
-    margin-top: 20px;
-  }
+.last-history.expanded .arrow {
+  transform: translateY(-50%) rotate(180deg);
 }
