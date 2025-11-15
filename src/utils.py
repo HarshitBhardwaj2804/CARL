@@ -62,7 +62,7 @@ class NamedJSONChatMessageHistory(BaseChatMessageHistory):
             ("user", "{question}")
         ])
         parser = StrOutputParser()
-        llm = ChatGroq(model="gemma2-9b-it", groq_api_key=groq_api_key)
+        llm = ChatGroq(model="llama-3.1-8b-instant", groq_api_key=groq_api_key)
         name_chain = prompt | llm | parser
         return name_chain.invoke({"question": message.content}).strip()
 
