@@ -426,23 +426,39 @@ body {
     transform: none; /* remove desktop transition */
   }
 
-  /* Sidebar */
   .sidebar {
-    width: 280px; /* Consistent width for mobile sidebar */
-    transform: translateX(-100%); /* hidden by default */
-    position: absolute; /* Changed to absolute for consistent behavior */
-    z-index: 1001; /* Ensure it's on top of everything */
+    width: 280px;
+    transform: translateX(-100%);
+    /* Use 'fixed' instead of 'absolute' to ensure it covers the full viewport height */
+    position: fixed; 
+    top: 0;
+    left: 0;
+    height: 100dvh; /* Dynamic viewport height for mobile browsers */
+    
+    /* Re-enable Flexbox to support 'justify-content: space-between' */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    z-index: 1001;
     box-shadow: 4px 0 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
   }
 
   .sidebar.active {
-    transform: translateX(0); /* shown when toggled */
+    transform: translateX(0);
+  }
+
+  /* Ensure the settings container stays at the bottom */
+  .sidebar .sidebar-settings {
+    margin-top: auto;
+    padding-bottom: 20px;
   }
 
   .close-sidebar {
-    display: block; /* show close button on mobile */
+    display: block;
   }
-
+  
   /* Main Area */
   .main {
     margin-left: 0; /* No margin on mobile */
@@ -548,4 +564,5 @@ body {
 
 .last-history.expanded .arrow {
   transform: translateY(-50%) rotate(180deg);
+
 }
