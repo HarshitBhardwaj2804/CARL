@@ -1,9 +1,15 @@
 # search_engine.py
 from langchain_community.tools.tavily_search import TavilySearchResults
 from langchain_groq import ChatGroq
-from langchain_core.prompts import ChatPromptTemplate, SystemMessagePromptTemplate, HumanMessagePromptTemplate
-from langchain_core.prompts import MessagesPlaceholder
+from langchain_core.prompts import (
+    ChatPromptTemplate, 
+    SystemMessagePromptTemplate, 
+    HumanMessagePromptTemplate,
+    MessagesPlaceholder
+)
 from langchain.agents import create_tool_calling_agent, AgentExecutor
+
+load_dotenv()
 import os
 from dotenv import load_dotenv
 
@@ -82,5 +88,6 @@ class TavilyAgent:
             verbose=True,
             handle_parsing_errors=True
         )
+
 
 
