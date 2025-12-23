@@ -9,9 +9,9 @@ from langchain_core.prompts import (
 )
 from langchain.agents import create_tool_calling_agent, AgentExecutor
 
-load_dotenv()
 import os
 from dotenv import load_dotenv
+load_dotenv()
 
 groq_api_key = os.getenv("GROQ_API_KEY_MAIN_PROJECT")
 tavily_api_key = os.getenv("TAVILY_API_KEY")
@@ -88,6 +88,7 @@ class TavilyAgent:
             verbose=True,
             handle_parsing_errors=True
         )
+
 
 
 
